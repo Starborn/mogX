@@ -1,4 +1,4 @@
-import { useState } from "react";
+seimport { useState } from "react";
 
 const pages = [
   {
