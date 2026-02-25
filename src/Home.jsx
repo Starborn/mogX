@@ -22,6 +22,16 @@ const tutorials = [
     tagColor: "#f7df1e",
   },
   {
+    path: "/js-node-guide",
+    title: "JavaScript & Node.js: From Zero to Deployed",
+    subtitle: "Variables, functions, arrays, DOM, async, npm, servers, and deployment recipes.",
+    level: "Beginner",
+    levelColor: "#ffd700",
+    icon: "⚡",
+    tag: "Cheatsheet",
+    tagColor: "#f7df1e",
+  },
+  {
     path: "/epistemic-traps",
     title: "Epistemic Traps",
     subtitle: "Why sycophancy and deception can be mathematically rational AI behavior.",
