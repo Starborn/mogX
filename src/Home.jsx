@@ -31,6 +31,56 @@ const tutorials = [
     tag: "Paper 1/6",
     tagColor: "#81e6d9",
   },
+  {
+    path: "/apemo",
+    title: "Alignment in Time: APEMO",
+    subtitle: "Identical errors have different consequences depending on when they happen.",
+    level: "Undergraduate",
+    levelColor: "#81e6d9",
+    icon: "⏱️",
+    tag: "Paper 2/6",
+    tagColor: "#fbd38d",
+  },
+  {
+    path: "/workflowperturb",
+    title: "WorkflowPerturb",
+    subtitle: "No single metric catches all the ways an AI workflow can break.",
+    level: "Undergraduate",
+    levelColor: "#81e6d9",
+    icon: "🔧",
+    tag: "Paper 3/6",
+    tagColor: "#81e6d9",
+  },
+  {
+    path: "/standardized-eval",
+    title: "Standardized AI Evaluation",
+    subtitle: "Static benchmarks can't evaluate dynamic agents. What replaces them?",
+    level: "Undergraduate",
+    levelColor: "#81e6d9",
+    icon: "📋",
+    tag: "Paper 4/6",
+    tagColor: "#f6ad55",
+  },
+  {
+    path: "/logitext",
+    title: "Logitext: Neurosymbolic SMT",
+    subtitle: "A formal system that processes logic and natural language in one framework.",
+    level: "Undergraduate",
+    levelColor: "#81e6d9",
+    icon: "🧮",
+    tag: "Paper 5/6",
+    tagColor: "#b794f4",
+  },
+  {
+    path: "/propensities",
+    title: "Capabilities Ain't All You Need",
+    subtitle: "What a model can do vs. what it tends to do -- and why the difference matters.",
+    level: "Undergraduate",
+    levelColor: "#81e6d9",
+    icon: "🎯",
+    tag: "Paper 6/6",
+    tagColor: "#fc8181",
+  },
 ]
 
 export default function Home() {
@@ -45,13 +95,11 @@ export default function Home() {
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Baloo+2:wght@700&display=swap');
         @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
         @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes glow { 0%, 100% { text-shadow: 0 0 20px rgba(129,230,217,0.3); } 50% { text-shadow: 0 0 40px rgba(129,230,217,0.5); } }
         a { text-decoration: none; color: inherit; }
         * { box-sizing: border-box; }
       `}</style>
 
       <div style={{ maxWidth: 700, margin: "0 auto", padding: "60px 24px 80px" }}>
-        {/* Header */}
         <div style={{ textAlign: "center", marginBottom: 48 }}>
           <div style={{
             fontSize: 64, marginBottom: 12,
@@ -77,7 +125,6 @@ export default function Home() {
           </p>
         </div>
 
-        {/* Tutorial cards */}
         <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
           {tutorials.map((t, i) => (
             <Link key={t.path} to={t.path}>
@@ -86,7 +133,7 @@ export default function Home() {
                 border: "1px solid rgba(255,255,255,0.08)",
                 borderRadius: 18, padding: "24px 28px",
                 cursor: "pointer", transition: "all 0.3s",
-                animation: `slideUp 0.5s ease-out ${i * 0.1}s both`,
+                animation: `slideUp 0.5s ease-out ${i * 0.07}s both`,
                 position: "relative", overflow: "hidden",
               }}
               onMouseEnter={e => {
@@ -138,19 +185,7 @@ export default function Home() {
           ))}
         </div>
 
-        {/* Coming soon */}
-        <div style={{
-          textAlign: "center", marginTop: 40, padding: "24px",
-          borderTop: "1px solid rgba(255,255,255,0.06)",
-        }}>
-          <p style={{ fontSize: 13, opacity: 0.35, margin: 0 }}>
-            More tutorials coming: APEMO (Temporal Alignment) · WorkflowPerturb · 
-            Standardized Evaluation · Logitext (Neurosymbolic SMT) · Capabilities vs Propensities
-          </p>
-        </div>
-
-        {/* Footer */}
-        <div style={{ textAlign: "center", marginTop: 32 }}>
+        <div style={{ textAlign: "center", marginTop: 40 }}>
           <p style={{ fontSize: 12, opacity: 0.25 }}>
             MOG Explains · Anthropomorphic Press · Indexed in Dow Jones Factiva
           </p>
