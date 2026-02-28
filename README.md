@@ -1,12 +1,12 @@
 # MOG Explains
 
-Interactive tutorials by Anthropomorphic Press, making cutting-edge AI research accessible to all audiences.
+Interactive tutorials by Paola Di Maio and ESL, Ronin Insitute/IGDORE, making cutting-edge AI research accessible to all audiences.
 
 ## Tutorials
+Check out our home page for the latest tutorials
+[Mogx](https://mog-x.vercel.app/)
+[BY ESL/Ronin-institute.org]
 
-- **Waking the Mind of God** -- Column tutorial (all ages)
-- **How to Build a Web App** -- React/JSX/hosting primer (beginner)
-- **Epistemic Traps** -- Paper deep dive with interactive phase diagrams (undergraduate)
 
 ## Deploy to Vercel
 
