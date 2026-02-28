@@ -10,7 +10,7 @@ import WorkflowPerturb from './WorkflowPerturb.jsx'
 import StandardizedEval from './StandardizedEval.jsx'
 import Logitext from './Logitext.jsx'
 import Propensities from './Propensities.jsx'
-import JSNodeGuide from './JSnodeguide.jsx'
+import Jsnodeguide from './Jsnodeguide.jsx'
 import Vinext from './Vinext.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -26,7 +26,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path="/standardized-eval" element={<StandardizedEval />} />
         <Route path="/logitext" element={<Logitext />} />
         <Route path="/propensities" element={<Propensities />} />
-        <Route path="/js-node-guide" element={<JSnodeguide />} />
+        <Route path="/js-node-guide" element={<Jsnodeguide />} />
         <Route path="/vinext" element={<Vinext />} />
       </Routes>
     </BrowserRouter>
