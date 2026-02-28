@@ -134,7 +134,7 @@ export default function Home() {
           <p style={{
             fontSize: 16, opacity: 0.5, margin: "0 0 8px",
             letterSpacing: 3, textTransform: "uppercase", fontWeight: 600,
-          }}>MOGX is a Great Teacher Project by Paola Di Maio, ESL www.Ronin-Institute.org </p>
+          }}>MOGX is a Great Teacher Project by Paola Di Maio,         brought to you by: ESL www.Ronin-Institute.org </p>
           <p style={{
             fontSize: 15, opacity: 0.6, maxWidth: 480, margin: "16px auto 0",
             lineHeight: 1.7,
