@@ -207,7 +207,7 @@ export default function Home() {
 
         <div style={{ textAlign: "center", marginTop: 40 }}>
           <p style={{ fontSize: 12, opacity: 0.25 }}>
-            MOG Explains · Anthropomorphic Press · Indexed in Dow Jones Factiva
+            MOG Explains ·
           </p>
         </div>
       </div>
