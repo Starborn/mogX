@@ -11,6 +11,7 @@ import StandardizedEval from './StandardizedEval.jsx'
 import Logitext from './Logitext.jsx'
 import Propensities from './Propensities.jsx'
 import JSNodeGuide from './JSNodeGuide.jsx'
+import Vinext from './Vinext.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -26,6 +27,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path="/logitext" element={<Logitext />} />
         <Route path="/propensities" element={<Propensities />} />
         <Route path="/js-node-guide" element={<JSNodeGuide />} />
+        <Route path="/vinext" element={<Vinext />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
