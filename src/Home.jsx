@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom'
 const tutorials = [
   {
     path: "/vinext",
-    title: "Vinext: The Week That Rewrote Web Development",
-    subtitle: "One engineer, one AI, seven days. How Cloudflare rebuilt Next.js from scratch -- and what it means for your career.",
+    title: "Vinext Rewriting Web Development",
+    subtitle: "Cloudflare rebuilt Next.js from scratch -- and what it means for your career.",
     level: "Undergraduate",
     levelColor: "#81e6d9",
     icon: "⚡",
