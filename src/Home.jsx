@@ -10,7 +10,7 @@ import WorkflowPerturb from './WorkflowPerturb.jsx'
 import StandardizedEval from './StandardizedEval.jsx'
 import Logitext from './Logitext.jsx'
 import Propensities from './Propensities.jsx'
-import JSNodeGuide from './JSNodeGuide.jsx'
+import JSNodeGuide from './JSnodeguide.jsx'
 import Vinext from './Vinext.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
