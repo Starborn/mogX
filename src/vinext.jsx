@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 const quizData = [
   {
-    q: "What is vinext?",
+    q: "What is vinext?",  
     options: [
       "A wrapper around Next.js that optimizes its output for Cloudflare",
       "A reimplementation of the Next.js API surface built on Vite",
