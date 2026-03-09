@@ -159,7 +159,7 @@ export default function ReactDeploy() {
               textTransform: "uppercase", padding: "3px 10px", borderRadius: 6,
               background: "#ffd70015", color: "#ffd700",
             }}>Beginner</span>
-          </div>
+          </div> 
           <h1 style={{
             fontSize: 38, fontWeight: 900, margin: "0 0 16px",
             letterSpacing: -1.2, lineHeight: 1.15,
