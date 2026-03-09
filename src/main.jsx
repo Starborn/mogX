@@ -12,6 +12,7 @@ import Logitext from './Logitext.jsx'
 import Propensities from './Propensities.jsx'
 import Jsnodeguide from './Jsnodeguide.jsx'
 import Vinext from './Vinext.jsx'
+import ReactDeploy from './ReactDeploy.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -28,6 +29,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path="/propensities" element={<Propensities />} />
         <Route path="/js-node-guide" element={<Jsnodeguide />} />
         <Route path="/vinext" element={<Vinext />} />
+        <Route path="/react-deploy" element={<ReactDeploy />} />
+
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
