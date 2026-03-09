@@ -1,0 +1,304 @@
+import { Link } from 'react-router-dom'
+import { useState } from 'react'
+
+const steps = [
+  {
+    icon: "🧠",
+    title: "Step 1 -- Describe what you want",
+    color: "#81e6d9",
+    content: `Tell Claude (or any capable LLM) exactly what you want to build. Be specific about the domain and purpose. For the AgentIDL × HMAS visualiser, the prompt was:
+
+"Build an interactive React app that maps AgentIDL ontology classes against the HMAS ontology stack (core, interaction, regulation). Show correspondences, gaps, and bridges. Dark theme, monospace font, three tabs, click-to-inspect detail panel."
+
+The more context you give -- audience, data sources, interaction model -- the closer the first output lands.`,
+  },
+  {
+    icon: "📁",
+    title: "Step 2 -- Understand the file structure",
+    color: "#fbd38d",
+    content: `A Vite + React app needs exactly four files to deploy:
+
+  mogx-repo/
+  ├── index.html         ← entry point, loads src/main.jsx
+  ├── package.json       ← declares React + Vite dependencies
+  ├── vite.config.js     ← tells Vite to use the React plugin
+  └── src/
+      ├── main.jsx       ← mounts the React app into index.html
+      └── App.jsx        ← your actual component (the big file)
+
+Claude generates all four. You only need to place them correctly.`,
+    mono: true,
+  },
+  {
+    icon: "🐙",
+    title: "Step 3 -- Create a GitHub repo and upload",
+    color: "#b794f4",
+    content: `Go to github.com → New repository. Name it (all lowercase, hyphens ok -- no uppercase, no spaces). Make it Public.
+
+Then upload your files:
+• Click "Add file" → "Upload files"
+• Drop index.html, package.json, vite.config.js at the root
+• For src/main.jsx and src/App.jsx: click "Add file" → "Create new file", type src/App.jsx in the name box (the slash creates the folder automatically), paste the contents, commit.
+
+Critical: App.jsx must be capital-A. Linux servers are case-sensitive -- app.jsx and App.jsx are different files.`,
+  },
+  {
+    icon: "▲",
+    title: "Step 4 -- Import to Vercel",
+    color: "#f093fb",
+    content: `Go to vercel.com → New Project → Import Git Repository.
+
+If your repo doesn't appear, click "Adjust GitHub App Permissions" and grant Vercel access to the Starborn org (or your account).
+
+Select the repo. Vercel auto-detects Vite and sets:
+  Build command:    vite build
+  Output directory: dist
+  
+No config needed. Click Deploy. Your app is live in ~60 seconds at your-project.vercel.app.
+
+Every subsequent push to the main branch auto-redeploys.`,
+  },
+  {
+    icon: "🔁",
+    title: "Step 5 -- Adding this tutorial to MOGx",
+    color: "#6ee7b7",
+    content: `MOGx uses React Router. Adding a new tutorial takes three edits:
+
+1. Place your tutorial JSX file in the src/ folder of the mogX repo.
+
+2. In src/main.jsx, add one import and one route:
+   import ReactDeploy from './ReactDeploy.jsx'
+   <Route path="/react-deploy" element={<ReactDeploy />} />
+
+3. In src/Home.jsx, add one object to the tutorials array:
+   {
+     path: "/react-deploy",
+     title: "Build and Deploy a React App",
+     subtitle: "From Claude prompt to live Vercel URL -- the complete pipeline.",
+     level: "Beginner",
+     levelColor: "#ffd700",
+     icon: "🚀",
+     tag: "Meta",
+     tagColor: "#f7df1e",
+   }
+
+Commit all three files. Vercel redeploys automatically.`,
+    mono: true,
+  },
+  {
+    icon: "⚠️",
+    title: "Common errors and fixes",
+    color: "#fc8181",
+    content: `Could not resolve "./App.jsx"
+→ Your App.jsx is named app.jsx (lowercase). Rename it to App.jsx on GitHub.
+
+A Project name can only contain lowercase letters
+→ Vercel project names must be all lowercase. Use idl-hmas not IDL-HMas.
+
+The specified name is already used
+→ A previous deployment attempt created a Vercel project with that name. Add -viz or -2 to the name.
+
+404 on all routes except home
+→ Add a vercel.json file at the repo root:
+   { "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }] }
+   MOGx already has this file -- copy it.`,
+    mono: true,
+  },
+]
+
+export default function ReactDeploy() {
+  const [active, setActive] = useState(null)
+
+  return (
+    <div style={{
+      minHeight: "100vh",
+      background: "linear-gradient(180deg, #0d0d1a 0%, #1a1a2e 40%, #16213e 100%)",
+      fontFamily: "'Inter', 'Segoe UI', system-ui, sans-serif",
+      color: "#e2e8f0",
+    }}>
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;700&display=swap');
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        a { text-decoration: none; color: inherit; }
+        * { box-sizing: border-box; }
+        pre { margin: 0; white-space: pre-wrap; word-break: break-word; }
+      `}</style>
+
+      <div style={{ maxWidth: 700, margin: "0 auto", padding: "60px 24px 80px" }}>
+
+        {/* Back */}
+        <Link to="/">
+          <div style={{
+            display: "inline-flex", alignItems: "center", gap: 8,
+            fontSize: 13, opacity: 0.5, marginBottom: 40,
+            cursor: "pointer", transition: "opacity 0.2s",
+          }}
+          onMouseEnter={e => e.currentTarget.style.opacity = 1}
+          onMouseLeave={e => e.currentTarget.style.opacity = 0.5}>
+            ← MOG Explains
+          </div>
+        </Link>
+
+        {/* Header */}
+        <div style={{ textAlign: "center", marginBottom: 52 }}>
+          <div style={{
+            fontSize: 64, marginBottom: 16,
+            animation: "float 4s ease-in-out infinite",
+          }}>🚀</div>
+          <div style={{ display: "flex", gap: 8, justifyContent: "center", marginBottom: 16 }}>
+            <span style={{
+              fontSize: 10, fontWeight: 700, letterSpacing: 1.5,
+              textTransform: "uppercase", padding: "3px 10px", borderRadius: 6,
+              background: "#f7df1e22", color: "#f7df1e",
+            }}>Meta</span>
+            <span style={{
+              fontSize: 10, fontWeight: 700, letterSpacing: 1.5,
+              textTransform: "uppercase", padding: "3px 10px", borderRadius: 6,
+              background: "#ffd70015", color: "#ffd700",
+            }}>Beginner</span>
+          </div>
+          <h1 style={{
+            fontSize: 38, fontWeight: 900, margin: "0 0 16px",
+            letterSpacing: -1.2, lineHeight: 1.15,
+            background: "linear-gradient(135deg, #81e6d9, #fbd38d, #f093fb)",
+            WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent",
+          }}>Build and Deploy a React App</h1>
+          <p style={{
+            fontSize: 16, opacity: 0.6, maxWidth: 500, margin: "0 auto",
+            lineHeight: 1.7,
+          }}>
+            From a Claude prompt to a live Vercel URL -- the complete pipeline, 
+            illustrated by building the AgentIDL × HMAS ontology visualiser.
+          </p>
+        </div>
+
+        {/* What you will make */}
+        <div style={{
+          background: "rgba(129,230,217,0.06)",
+          border: "1px solid rgba(129,230,217,0.15)",
+          borderRadius: 16, padding: "20px 24px", marginBottom: 40,
+        }}>
+          <div style={{ fontSize: 13, fontWeight: 700, color: "#81e6d9", marginBottom: 10, letterSpacing: 1, textTransform: "uppercase" }}>
+            What you will build
+          </div>
+          <p style={{ fontSize: 14, opacity: 0.8, lineHeight: 1.7, margin: 0 }}>
+            A live interactive web app at your own Vercel URL. The example built during this tutorial -- 
+            an ontology correspondence map for the W3C AI KR Community Group -- is live at{" "}
+            <a href="https://idl-hmas.vercel.app" target="_blank" rel="noreferrer"
+              style={{ color: "#81e6d9", borderBottom: "1px solid rgba(129,230,217,0.3)" }}>
+              idl-hmas.vercel.app
+            </a>.
+            No terminal required. No local install required. Everything done in the browser.
+          </p>
+        </div>
+
+        {/* Steps */}
+        <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
+          {steps.map((step, i) => {
+            const isOpen = active === i
+            return (
+              <div key={i}
+                style={{
+                  background: isOpen ? "rgba(255,255,255,0.07)" : "rgba(255,255,255,0.04)",
+                  border: `1px solid ${isOpen ? step.color + "44" : "rgba(255,255,255,0.08)"}`,
+                  borderRadius: 18, overflow: "hidden",
+                  transition: "all 0.3s",
+                  animation: `slideUp 0.5s ease-out ${i * 0.08}s both`,
+                }}>
+                {/* Header row */}
+                <div
+                  onClick={() => setActive(isOpen ? null : i)}
+                  style={{
+                    padding: "22px 28px", cursor: "pointer",
+                    display: "flex", alignItems: "center", gap: 18,
+                  }}>
+                  <div style={{
+                    fontSize: 32, width: 52, height: 52, flexShrink: 0,
+                    display: "flex", alignItems: "center", justifyContent: "center",
+                    background: "rgba(255,255,255,0.06)", borderRadius: 14,
+                  }}>{step.icon}</div>
+                  <div style={{ flex: 1 }}>
+                    <h2 style={{
+                      fontSize: 18, fontWeight: 800, margin: 0,
+                      color: isOpen ? step.color : "#e2e8f0",
+                      transition: "color 0.3s", letterSpacing: -0.3,
+                    }}>{step.title}</h2>
+                  </div>
+                  <div style={{
+                    fontSize: 18, opacity: 0.4, transition: "transform 0.3s",
+                    transform: isOpen ? "rotate(90deg)" : "rotate(0deg)",
+                    flexShrink: 0,
+                  }}>→</div>
+                </div>
+
+                {/* Content */}
+                {isOpen && (
+                  <div style={{
+                    padding: "0 28px 28px",
+                    borderTop: `1px solid ${step.color}22`,
+                  }}>
+                    <div style={{ paddingTop: 20 }}>
+                      {step.content.split('\n').map((line, j) => {
+                        const isCode = line.startsWith('  ') || line.startsWith('→') || line.startsWith('{') || line.startsWith('}')
+                        return line.trim() === '' ? (
+                          <div key={j} style={{ height: 10 }} />
+                        ) : (
+                          <p key={j} style={{
+                            margin: "0 0 6px",
+                            fontSize: isCode ? 13 : 14,
+                            lineHeight: 1.75,
+                            opacity: isCode ? 0.9 : 0.75,
+                            fontFamily: isCode ? "'IBM Plex Mono', monospace" : "inherit",
+                            color: isCode ? step.color : "#e2e8f0",
+                            paddingLeft: isCode ? 12 : 0,
+                            borderLeft: isCode ? `2px solid ${step.color}44` : "none",
+                          }}>{line}</p>
+                        )
+                      })}
+                    </div>
+                  </div>
+                )}
+              </div>
+            )
+          })}
+        </div>
+
+        {/* Live example callout */}
+        <div style={{
+          marginTop: 48, padding: "24px 28px",
+          background: "rgba(240,147,251,0.06)",
+          border: "1px solid rgba(240,147,251,0.2)",
+          borderRadius: 18, textAlign: "center",
+        }}>
+          <div style={{ fontSize: 28, marginBottom: 12 }}>🌐</div>
+          <div style={{ fontSize: 15, fontWeight: 700, marginBottom: 8, color: "#f093fb" }}>
+            See the finished result
+          </div>
+          <p style={{ fontSize: 13, opacity: 0.6, marginBottom: 16, lineHeight: 1.6 }}>
+            The AgentIDL × HMAS ontology map built in this tutorial -- 
+            from Claude prompt to live deployment in one session.
+          </p>
+          <a href="https://idl-hmas.vercel.app" target="_blank" rel="noreferrer">
+            <div style={{
+              display: "inline-block", padding: "10px 24px",
+              background: "rgba(240,147,251,0.15)",
+              border: "1px solid rgba(240,147,251,0.3)",
+              borderRadius: 10, fontSize: 13, fontWeight: 700,
+              color: "#f093fb", cursor: "pointer",
+              fontFamily: "'IBM Plex Mono', monospace",
+            }}>
+              idl-hmas.vercel.app →
+            </div>
+          </a>
+        </div>
+
+        {/* Footer */}
+        <div style={{ textAlign: "center", marginTop: 40 }}>
+          <p style={{ fontSize: 12, opacity: 0.25 }}>MOG Explains ·</p>
+        </div>
+
+      </div>
+    </div>
+  )
+}
