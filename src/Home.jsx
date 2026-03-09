@@ -12,6 +12,16 @@ const tutorials = [
     tagColor: "#6ee7b7",
   },
   {
+  path: "/react-deploy",
+  title: "Build and Deploy a React App",
+  subtitle: "From Claude prompt to live Vercel URL -- the complete pipeline.",
+  level: "Beginner",
+  levelColor: "#ffd700",
+  icon: "🚀",
+  tag: "Meta",
+  tagColor: "#f7df1e",
+},
+  {
     path: "/js-node-guide",
     title: "JavaScript & Node.js: From Zero to Deployed",
     subtitle: "Variables, functions, arrays, DOM, async, npm, servers, and deployment recipes.",
