@@ -76,7 +76,7 @@ Every subsequent push to the main branch auto-redeploys.`,
    {
      path: "/react-deploy",
      title: "Build and Deploy a React App",
-     subtitle: "From Claude prompt to live Vercel URL -- the complete pipeline.",
+     subtitle: "From promt to live Vercel URL -- the complete pipeline.",
      level: "Beginner",
      levelColor: "#ffd700",
      icon: "🚀",
